@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <title>بلیت رویداد دهم</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Righteous"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body dir="rtl">
+    <!--Desktop Ticket -->
+    <div class="gridcontainer tablet-none">
+      <div class="date">
+        <p class="bold">۱۰ آبان ۱۳۹۸ ساعت ۱۰ صبح</p>
+      </div>
+      <div class="headline">
+        <p>علیرضا مرادی سوران</p>
+      </div>
+      <div class="content">
+        <div class="sidel">
+          <!--Put QRCode Number in ticket-number Attribute -->
+          <p class="bold" dir="ltr" id="ticketNumber" ticket-number="123 42 63">
+            ۱۲۳ ۴۲ ۶۳
+          </p>
+        </div>
+        <div class="image" id="qrcode-desktop">
+          <canvas class="wh100" id="qr-desktop"></canvas>
+        </div>
+        <div class="details">
+          <p class="bold">صبح‌خلاق اصفهان</p>
+          <p><b>موضوع رویداد:</b> Vision</p>
+          <p class="bold">سخنران: والا یزدانی</p>
+          <p>Attend</p>
+        </div>
+        <div class="sider">
+          <p class="bold" dir="ltr">۱۲۳ ۴۲ ۶۳</p>
+        </div>
+      </div>
+      <div class="circles">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+      </div>
+      <div class="barcode">
+        آدرس: اصفهان، پل‌شهرستان<br />محل دائمی نمایشگاه‌های اصفهان نمایشگاه
+        اتوکام، سالن فرصت‌ها.
+      </div>
+    </div>
+
+    <!-- Mobile Ticket -->
+    <div class="container desktop-none">
+      <div class="phone" style="margin-top: 0px;">
+        <div class="ticket-container">
+          <div class="movie-image">
+            <h5>سخنران: والا یزدانی</h5>
+          </div>
+          <div class="ticket-info">
+            <div class="movie-title">
+              <h2 style="font-size: 30px;">علیرضا مرادی سوران</h2>
+              <span
+                ><i class="fas fa-map-pin fa-xs"></i> آدرس محل برگزاری رویداد
+              </span>
+            </div>
+            <div class="seat-info">
+              <div class="seat-info--item">
+                <h3>ساعت</h3>
+                <p>۱۰:۰۰</p>
+              </div>
+              <div class="seat-info--item">
+                <h3>روز</h3>
+                <p>۱۰</p>
+              </div>
+              <div class="seat-info--item">
+                <h3>ماه</h3>
+                <p>آبان</p>
+              </div>
+            </div>
+            <div class="barcode-container" id="qrcode-mobile">
+              <canvas id="qr-mobile"></canvas>
+              <br />
+            </div>
+            <p dir="ltr" style="text-align: center;">
+              #۱۲۳ ۴۲ ۶۳
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/qrious.js"></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        var qr = new QRious({
+          element: document.getElementById("qr-desktop"),
+          value: document
+            .getElementById("ticketNumber")
+            .getAttribute("ticket-number"),
+          background: "white", // background color
+          foreground: "black", // foreground color
+          backgroundAlpha: 1,
+          foregroundAlpha: 1,
+          level: "H", // Error correction level of the QR code (L, M, Q, H)
+          mime: "image/png", // MIME type used to render the image for the QR code
+          size: 240, // Size of the QR code in pixels.
+          padding: null // padding in pixels
+        });
+        var canvas = document.getElementById("qr-desktop");
+        var img = convertCanvasToImageDesktop(canvas);
+        document.getElementById("qr-desktop").remove();
+        img.classList.add("wh100");
+        document.getElementById("qrcode-desktop").appendChild(img);
+        function convertCanvasToImageDesktop(canvas) {
+          var image = new Image();
+          image.src = canvas.toDataURL("image/png");
+          return image;
+        }
+
+        var qr = new QRious({
+          element: document.getElementById("qr-mobile"),
+          value: document
+            .getElementById("ticketNumber")
+            .getAttribute("ticket-number"),
+          background: "white", // background color
+          foreground: "black", // foreground color
+          backgroundAlpha: 1,
+          foregroundAlpha: 1,
+          level: "H", // Error correction level of the QR code (L, M, Q, H)
+          mime: "image/png", // MIME type used to render the image for the QR code
+          size: 240, // Size of the QR code in pixels.
+          padding: null // padding in pixels
+        });
+        var canvas = document.getElementById("qr-mobile");
+        var img = convertCanvasToImageDesktop(canvas);
+        document.getElementById("qr-mobile").remove();
+        img.classList.add("wh100");
+        document.getElementById("qrcode-mobile").appendChild(img);
+        function convertCanvasToImageDesktop(canvas) {
+          var image = new Image();
+          image.src = canvas.toDataURL("image/png");
+          return image;
+        }
+      };
+    </script>
+  </body>
+</html>
