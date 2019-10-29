@@ -1,3 +1,14 @@
+@font-face {
+  font-family: Vazir;
+  src: url("fonts/Vazir.woff");
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url("fonts/Vazir-Bold.woff");
+  font-weight: bold;
+}
+
 :root {
   --background: #fff;
   --dark: #211b35;
@@ -7,6 +18,10 @@ body {
   background: var(--background);
   color: var(--dark);
   font-family: "Vazir", "Righteous", cursive;
+}
+
+.enfont {
+  font-family: "Righteous", cursive !important;
 }
 
 .bold {
