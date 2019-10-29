@@ -358,3 +358,40 @@ body {
 
   color: white;
 }
+
+.phone .ticket-container .ticket-info .movie-title h2 {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 414px) {
+  .phone .ticket-container:before {
+    left: 15%;
+  }
+  .movie-image > h5 {
+    left: 31%;
+    top: 30%;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .phone .ticket-container:before {
+    left: 11.8%;
+  }
+  .movie-image > h5 {
+    left: 29%;
+    top: 33%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .phone .ticket-container:before {
+    left: 6%;
+  }
+  .movie-image > h5 {
+    left: 26%;
+    top: 40%;
+  }
+  .phone .ticket-container .ticket-info .movie-title h2 {
+    font-size: 26px;
+  }
+}
